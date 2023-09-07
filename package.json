@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "flask": "pnpm install flask",
+    "pipenv": "pipenv install --prefix server && pipenv shell --prefix server"
   },
   "dependencies": {
     "@types/node": "20.5.9",
