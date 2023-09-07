@@ -4,7 +4,9 @@ from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
 
-metadata = MetaData(naming_convention=convention)
+metadata = MetaData(naming_convention={
+    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+})
 
 db = SQLAlchemy(metadata=metadata)
 
@@ -12,7 +14,7 @@ class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, Nullable=False, unique=True)
+    username = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, nullable=False)
     user_channels = db.relationship('Channel', backref='user')
 
@@ -44,7 +46,7 @@ class TvShow(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
-    date_added = db.Column(db.DateTime)
+    date_added = db.Column(db.DateTime, default = db.func.now())
     season = db.Column(db.Integer)
     episode = db.Column(db.Integer)
     rating = db.Column(db.Integer)

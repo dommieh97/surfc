@@ -5,14 +5,17 @@ name = "pypi"
 
 [packages]
 Faker = "*"
-Flask = "*"
+flask = "*"
+Flask-bcrypt = "*"
+flask-login = "*"
 Flask-Migrate = "*"
+flask-restful = "*"
 Flask-SQLAlchemy = "*"
 importlib-resources = "*"
 ipdb = "*"
 pytest = "*"
+sqlalchemy = "*"
 sqlalchemy-serializer = "*"
-flask-restful = "*"
 [dev-packages]
 
 [requires]
