@@ -10,12 +10,16 @@ Flask-bcrypt = "*"
 flask-login = "*"
 Flask-Migrate = "*"
 flask-restful = "*"
-Flask-SQLAlchemy = "*"
+flask-sqlalchemy = "*"
 importlib-resources = "*"
 ipdb = "*"
 pytest = "*"
 sqlalchemy = "*"
 sqlalchemy-serializer = "*"
+jellyfin-apiclient-python = "*"
+jellyfin = "*"
+jellyfinapi = "*"
+
 [dev-packages]
 
 [requires]

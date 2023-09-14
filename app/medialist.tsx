@@ -1,17 +1,17 @@
-import React from 'react';
+// import React from 'react';
 
-const MediaList = () => {
+// const MediaList = () => {
 
     
-  return (
-    <ul>
-      {mediaFiles.map((mediaFile) => (
-        <li key={mediaFile.id}>
-          <video src={mediaFile.streamUrl} controls />
-        </li>
-      ))}
-    </ul>
-  );
-};
+//   return (
+//     <ul>
+//       {mediaFiles.map((mediaFile) => (
+//         <li key={mediaFile.id}>
+//           <video src={mediaFile.streamUrl} controls />
+//         </li>
+//       ))}
+//     </ul>
+//   );
+// };
 
-export default MediaList;
+// export default MediaList;

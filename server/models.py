@@ -17,6 +17,7 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, nullable=False)
     user_channels = db.relationship('Channel', backref='user')
+    is_active = db.Column(db.Boolean, default=False)
 
 class Channel(db.Model, SerializerMixin):
     __tablename__ = 'channels'
@@ -24,8 +25,9 @@ class Channel(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     date_added = db.Column(db.DateTime, nullable=False)
-    show_id = db.relationship('Show', backref='channel')
-    movie_id = db.relationship('Movie', backref='channel')
+    show_id = db.relationship('ChannelShow', backref='channel')
+    movie_id = db.relationship('ChannelMovie', backref='channel')
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class ChannelShow(db.Model, SerializerMixin):
     __tablename__ = 'channel_shows'
@@ -41,7 +43,7 @@ class ChannelMovie(db.Model, SerializerMixin):
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'))
     channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
 
-class TvShow(db.Model, SerializerMixin):
+class Show(db.Model, SerializerMixin):
     __tablename__ ='shows'
 
     id = db.Column(db.Integer, primary_key=True)
