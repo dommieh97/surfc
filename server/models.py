@@ -16,18 +16,20 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, nullable=False)
-    user_channels = db.relationship('Channel', backref='user')
+    # user_channels = db.relationship('Channel', backref='user')
     is_active = db.Column(db.Boolean, default=False)
 
 class Channel(db.Model, SerializerMixin):
     __tablename__ = 'channels'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String, nullable=False)
-    date_added = db.Column(db.DateTime, nullable=False)
-    show_id = db.relationship('ChannelShow', backref='channel')
-    movie_id = db.relationship('ChannelMovie', backref='channel')
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    vidurl = db.Column(db.String)
+    imgurl = db.Column(db.String)
+    title = db.Column(db.String)
+    # movie = db.relationship("Movie", back_populates="movies")
+    # show_id = db.relationship('ChannelShow', backref='channel')
+    # movie_id = db.relationship('ChannelMovie', backref='channel')
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class ChannelShow(db.Model, SerializerMixin):
     __tablename__ = 'channel_shows'
@@ -64,11 +66,12 @@ class Movie(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
-    date_added = db.Column(db.DateTime)
-    rating = db.Column(db.Integer)
+    rating = db.Column(db.String)
     synopsis = db.Column(db.Text)
-    release_date = db.Column(db.DateTime)
     year = db.Column(db.Integer)
-    imdb_id = db.Column(db.Integer)
-    genre = db.Column(db.String)
-    people = db.Column(db.Text)
+
+class Genre(db.Model, SerializerMixin):
+    __tablename__ = "genres"
+
+    id = db.Column(db.Integer, primary_key=True)
+    theme = db.Column(db.String)

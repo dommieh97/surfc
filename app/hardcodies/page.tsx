@@ -1,5 +1,4 @@
 import VideoPlayer from './videoplayer';
-import Images from "./components/Images"
 export default function Home() {
 
 
@@ -9,10 +8,8 @@ export default function Home() {
     <div className="mx-auto">
       
       <div>
-        <Images/>
-        
+        {/* <VideoPlayer /> */}
       </div>
-      {/* <VideoPlayer/> */}
       </div>
     </div>
   );
